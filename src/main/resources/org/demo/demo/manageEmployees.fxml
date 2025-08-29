@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.demo.demo.controller.ManageEmployeesController"
+            stylesheets="@css/manageEmployees.css">
+
+    <!-- Navbar -->
+    <top>
+        <fx:include source="navbar.fxml"/>
+    </top>
+
+    <!-- Contenu principal -->
+    <center>
+        <VBox spacing="10" alignment="CENTER" styleClass="content-section">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+
+            <!-- Titre de la section -->
+            <VBox alignment="CENTER" spacing="5">
+                <Label text="Gestion des Employés" styleClass="section-title"/>
+                <Rectangle width="50" height="2" styleClass="section-underline"/>
+            </VBox>
+
+            <!-- Section unique de gestion des employés -->
+            <VBox spacing="15" alignment="CENTER" styleClass="single-employee-section">
+
+                <!-- Formulaire d'ajout compact -->
+                <VBox spacing="10" alignment="CENTER" styleClass="add-form">
+                    <HBox spacing="10" alignment="CENTER">
+                        <TextField fx:id="usernameField" promptText="nom@capgemini.com" prefWidth="200"/>
+                        <PasswordField fx:id="passwordField" promptText="Mot de passe" prefWidth="150"/>
+                        <Button fx:id="addEmployeeButton" text="Ajouter" onAction="#handleAddEmployee" styleClass="primary-button"/>
+                    </HBox>
+                    <Label fx:id="statusLabel" text="" styleClass="status-message"/>
+                </VBox>
+
+                <!-- Liste des employés -->
+                <VBox spacing="8" alignment="CENTER" styleClass="employee-list-section">
+                    <Label text="Liste des employés" styleClass="section-title"/>
+                    <ScrollPane prefHeight="200" prefWidth="500" styleClass="employee-scroll">
+                        <VBox fx:id="employeeContainer" spacing="2" styleClass="employee-container"/>
+                    </ScrollPane>
+                </VBox>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

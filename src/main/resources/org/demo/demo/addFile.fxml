@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.demo.demo.controller.AddFileController"
+            stylesheets="@css/addfile.css">
+
+  <top>
+    <fx:include source="navbar.fxml"/>
+  </top>
+
+  <center>
+    <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+        <VBox styleClass="content-section" spacing="40" alignment="CENTER">
+          <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+          </padding>
+
+          <!-- Upload Card -->
+          <StackPane styleClass="upload-card-container">
+            <!-- Decorative background circles -->
+            <Circle radius="120" styleClass="card-bg-circle circle-1"/>
+            <Circle radius="80" styleClass="card-bg-circle circle-2"/>
+
+            <!-- Main Upload Card -->
+            <VBox styleClass="upload-card" spacing="30" alignment="CENTER">
+              <VBox alignment="CENTER" spacing="15" styleClass="upload-icon-section">
+                <StackPane styleClass="upload-icon-container">
+                  <Circle radius="50" styleClass="upload-icon-bg"/>
+                  <FontIcon iconLiteral="bi-file-earmark-arrow-up" styleClass="upload-main-icon"/>
+                </StackPane>
+                <Label text="Sélectionnez votre fichier" styleClass="upload-title"/>
+                <Label text="Formats supportés: Excel (.xlsx, .xls), PDF (.pdf)" styleClass="upload-description"/>
+              </VBox>
+
+              <!-- File Selection Area -->
+              <VBox spacing="20" alignment="CENTER" styleClass="file-selection-area">
+                <HBox spacing="15" alignment="CENTER" styleClass="file-input-container">
+                  <TextField fx:id="filePathField" promptText="Aucun fichier sélectionné..."
+                             editable="false" styleClass="modern-file-field"/>
+                  <Button onAction="#onDownloadButtonClick" styleClass="browse-button">
+                    <graphic>
+                      <HBox spacing="8" alignment="CENTER">
+                        <FontIcon iconLiteral="bi-folder2-open" styleClass="browse-icon"/>
+                        <Label text="Parcourir" styleClass="browse-text"/>
+                      </HBox>
+                    </graphic>
+                  </Button>
+                </HBox>
+
+                <!-- Action Buttons -->
+                <HBox spacing="20" alignment="CENTER" styleClass="action-buttons">
+                  <Button onAction="#onAddButtonClick" styleClass="primary-button">
+                    <graphic>
+                      <HBox spacing="8" alignment="CENTER">
+                        <FontIcon iconLiteral="bi-plus-circle" styleClass="btn-icon"/>
+                        <Label text="Ajouter le Fichier" styleClass="btn-text"/>
+                      </HBox>
+                    </graphic>
+                  </Button>
+                </HBox>
+                <HBox alignment="CENTER" styleClass="simple-status-section">
+                  <Label fx:id="Text" text="" styleClass="status-message"/>
+                  <FontIcon fx:id="loadingSpinner" iconLiteral="bi-arrow-repeat" styleClass="simple-spinner" visible="false"/>
+                </HBox>
+              </VBox>
+            </VBox>
+          </StackPane>
+
+          <!-- Simple Status Section -->
+
+
+        </VBox>
+    </ScrollPane>
+  </center>
+
+</BorderPane>

@@ -1,0 +1,47 @@
+/* Design de connexion simple et propre */
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0, 0, 5);
+    -fx-max-width: 350;
+    -fx-min-width: 350;
+}
+
+.title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.input {
+    -fx-pref-width: 300;
+    -fx-font-size: 14px;
+    -fx-padding: 12;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.input:focused {
+    -fx-border-color: #4A90E2;
+    -fx-border-width: 2;
+}
+
+.button {
+    -fx-background-color: #4A90E2;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 12;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-pref-width: 300;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.button:hover {
+    -fx-background-color: #3498db;
+}

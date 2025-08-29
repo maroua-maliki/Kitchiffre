@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.demo.demo.controller.LoginController" stylesheets="@css/login.css">
+    <children>
+        <VBox alignment="CENTER" spacing="25" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" styleClass="login-card">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <Label text="Connexion" styleClass="title"/>
+
+            <TextField fx:id="usernameField" promptText="Email" maxWidth="300" styleClass="input"/>
+            <PasswordField fx:id="passwordField" promptText="Mot de passe" maxWidth="300" styleClass="input"/>
+
+            <Button text="Se connecter" onAction="#handleLogin" maxWidth="300" styleClass="button"/>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.demo.demo.controller.AddFileManuelController"
+            stylesheets="@css/addFileManuel.css">
+
+    <!-- Barre de navigation -->
+    <top>
+        <fx:include source="navbar.fxml"/>
+    </top>
+
+    <!-- Contenu principal -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+            <VBox styleClass="main-container">
+
+
+                <!-- Form Content Section -->
+                <VBox styleClass="manuel-content-section" spacing="35" alignment="CENTER">
+                    <padding>
+                        <Insets top="35" right="35" bottom="35" left="35"/>
+                    </padding>
+
+                    <!-- Form Card -->
+                    <StackPane styleClass="manuel-card-container">
+                        <!-- Decorative background circles -->
+                        <Circle radius="110" styleClass="manuel-bg-circle circle-1"/>
+                        <Circle radius="75" styleClass="manuel-bg-circle circle-2"/>
+
+                        <!-- Main Form Card -->
+                        <VBox styleClass="manuel-card" spacing="28" alignment="CENTER">
+                            <VBox alignment="CENTER" spacing="15" styleClass="manuel-icon-section">
+                                <StackPane styleClass="manuel-icon-container">
+                                    <Circle radius="45" styleClass="manuel-icon-bg"/>
+                                    <FontIcon iconLiteral="bi-file-earmark-plus" styleClass="manuel-main-icon"/>
+                                </StackPane>
+                                <Label text="Nouveau Produit PDF" styleClass="manuel-title"/>
+                                <Label text="Remplissez les informations du produit ci-dessous" styleClass="manuel-description"/>
+                            </VBox>
+
+                            <!-- Form Input Area -->
+                            <VBox spacing="18" alignment="CENTER" styleClass="manuel-input-area">
+                                <!-- Reference Field -->
+                                <VBox spacing="8" alignment="CENTER" styleClass="input-group">
+                                    <HBox spacing="8" alignment="CENTER_LEFT" styleClass="input-label-container">
+                                        <FontIcon iconLiteral="bi-tag" styleClass="input-icon"/>
+                                        <Label text="Référence" styleClass="input-label"/>
+                                    </HBox>
+                                    <TextField fx:id="refField" promptText="Entrez la référence du produit..." styleClass="modern-input-field"/>
+                                </VBox>
+
+                                <!-- Price Field -->
+                                <VBox spacing="8" alignment="CENTER" styleClass="input-group">
+                                    <HBox spacing="8" alignment="CENTER_LEFT" styleClass="input-label-container">
+                                        <FontIcon iconLiteral="bi-cash" styleClass="input-icon"/>
+                                        <Label text="Prix" styleClass="input-label"/>
+                                    </HBox>
+                                    <TextField fx:id="prixField" promptText="Entrez le prix en euros..." styleClass="modern-input-field"/>
+                                </VBox>
+
+                                <!-- Designation Field -->
+                                <VBox spacing="8" alignment="CENTER" styleClass="input-group">
+                                    <HBox spacing="8" alignment="CENTER_LEFT" styleClass="input-label-container">
+                                        <FontIcon iconLiteral="bi-card-text" styleClass="input-icon"/>
+                                        <Label text="Désignation" styleClass="input-label"/>
+                                    </HBox>
+                                    <TextField fx:id="designationField" promptText="Entrez la désignation du produit..." styleClass="modern-input-field"/>
+                                </VBox>
+
+                                <!-- File Name Field -->
+                                <VBox spacing="8" alignment="CENTER" styleClass="input-group">
+                                    <HBox spacing="8" alignment="CENTER_LEFT" styleClass="input-label-container">
+                                        <FontIcon iconLiteral="bi-file-earmark" styleClass="input-icon"/>
+                                        <Label text="Nom du fichier PDF" styleClass="input-label"/>
+                                    </HBox>
+                                    <TextField fx:id="nomFichierField" promptText="Entrez le nom du fichier PDF..." styleClass="modern-input-field"/>
+                                </VBox>
+
+                                <!-- Action Buttons -->
+                                <HBox spacing="20" alignment="CENTER" styleClass="manuel-action-buttons">
+                                    <Button fx:id="annulerButton" onAction="#onAnnulerClicked" styleClass="manuel-secondary-button">
+                                        <graphic>
+                                            <HBox spacing="8" alignment="CENTER">
+                                                <FontIcon iconLiteral="bi-arrow-left" styleClass="btn-icon"/>
+                                                <Label text="Annuler" styleClass="btn-text"/>
+                                            </HBox>
+                                        </graphic>
+                                    </Button>
+
+                                    <Button fx:id="enregistrerButton" styleClass="manuel-primary-button">
+                                        <graphic>
+                                            <HBox spacing="8" alignment="CENTER">
+                                                <FontIcon iconLiteral="bi-check-circle" styleClass="btn-icon"/>
+                                                <Label text="Enregistrer" styleClass="btn-text"/>
+                                            </HBox>
+                                        </graphic>
+                                    </Button>
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </StackPane>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,217 @@
+/* manageEmployees.css */
+
+/* Fond général de la page */
+.root {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #f8fafc, #e2e8f0);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-opacity: 0.3;
+}
+
+/* Section de contenu */
+.content-section {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 15, 0.2, 0, 3);
+    -fx-max-width: 600;
+    -fx-min-width: 600;
+    -fx-max-height: 450;
+}
+
+/* Titres et en-têtes */
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #2c3e50;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.subsection-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #34495e;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.section-underline {
+    -fx-fill: linear-gradient(to right, #3498db, #2980b9);
+}
+
+/* Section unique */
+.single-employee-section {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 10, 0.15, 0, 2);
+    -fx-max-width: 550;
+    -fx-min-width: 550;
+}
+
+/* Formulaire d'ajout compact */
+.add-form {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.03), 5, 0.1, 0, 1);
+}
+
+.employee-list-section {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.03), 5, 0.1, 0, 1);
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #e1e8ed;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 8 12;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #ecf0f1;
+}
+
+/* Bouton principal */
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #3498db);
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 10 20;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(41, 128, 185, 0.3), 6, 0, 0, 1);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #3498db, #5dade2);
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.6), 12, 0, 0, 4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.primary-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Champs de saisie */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-border-color: #d1d9e6;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 10;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.3), 6, 0, 0, 0);
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Message de statut */
+.status-message {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+}
+
+/* Container des employés */
+.employee-scroll {
+    -fx-background-color: white;
+    -fx-border-color: #d1d9e6;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.employee-container {
+    -fx-background-color: white;
+    -fx-padding: 5;
+}
+
+/* Ligne d'employé */
+.employee-row {
+    -fx-background-color: white;
+    -fx-border-color: #e8e8e8;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8 10;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.employee-row:hover {
+    -fx-background-color: #f5f5f5;
+}
+
+.employee-name {
+    -fx-text-fill: #2c3e50;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* Boutons d'action dans la liste */
+.action-button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ced4da;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-text-fill: #495057;
+    -fx-font-size: 10px;
+    -fx-font-weight: 500;
+    -fx-padding: 4 10;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-min-width: 85;
+    -fx-pref-width: 85;
+}
+
+.action-button:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #6c757d;
+    -fx-text-fill: #212529;
+}
+
+.action-button:pressed {
+    -fx-background-color: #e9ecef;
+    -fx-border-color: #495057;
+}

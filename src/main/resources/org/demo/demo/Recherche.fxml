@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.demo.demo.controller.RechercheController"
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@css/recherche.css">
+
+    <top>
+        <fx:include source="navbar.fxml"/>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+            <VBox styleClass="main-container">
+
+
+                <!-- Search Content Section -->
+                <VBox styleClass="search-content-section" spacing="10" alignment="CENTER">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+
+                    <!-- Search Card -->
+                    <StackPane styleClass="search-card-container">
+                        <!-- Decorative background circles -->
+                        <Circle radius="100" styleClass="search-bg-circle circle-1"/>
+                        <Circle radius="70" styleClass="search-bg-circle circle-2"/>
+
+                        <!-- Main Search Card -->
+                        <VBox styleClass="search-card" spacing="25" alignment="CENTER">
+                            <VBox alignment="CENTER" spacing="12" styleClass="search-icon-section">
+                                <StackPane styleClass="search-icon-container">
+                                    <Circle radius="40" styleClass="search-icon-bg"/>
+                                    <FontIcon iconLiteral="bi-search" styleClass="search-main-icon"/>
+                                </StackPane>
+                                <Label text="Recherche" styleClass="search-title"/>
+                                <Label text="Utilisez les filtres pour affiner votre recherche" styleClass="search-description"/>
+                            </VBox>
+
+                            <!-- Search Input Area -->
+                            <VBox spacing="15" alignment="CENTER" styleClass="search-input-area">
+                                <HBox spacing="12" alignment="CENTER" styleClass="search-input-container">
+                                    <TextField fx:id="searchField" promptText="Rechercher par description..." styleClass="modern-search-field"/>
+                                    <ComboBox fx:id="typeComboBox" promptText="Type" styleClass="modern-combo-box">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="Tout"/>
+                                                <String fx:value="Proto"/>
+                                                <String fx:value="Série"/>
+                                            </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                </HBox>
+
+                                <!-- Search Button -->
+                                <Button onAction="#onSearchClicked" styleClass="search-primary-button">
+                                    <graphic>
+                                        <HBox spacing="8" alignment="CENTER">
+                                            <FontIcon iconLiteral="bi-search" styleClass="search-btn-icon"/>
+                                            <Label text="Lancer la Recherche" styleClass="search-btn-text"/>
+                                        </HBox>
+                                    </graphic>
+                                </Button>
+                            </VBox>
+                        </VBox>
+                    </StackPane>
+
+                    <!-- Results Section -->
+                    <VBox spacing="10" alignment="CENTER" styleClass="results-section">
+                        <!-- Status Messages -->
+                        <VBox alignment="CENTER" spacing="10" styleClass="status-messages">
+                            <Label fx:id="noResultLabel" text="Aucun résultat trouvé." visible="false" styleClass="no-result-message"/>
+                            <Label fx:id="loadingLabel" text="Chargement en cours..." visible="false" styleClass="loading-message"/>
+                        </VBox>
+
+                        <!-- Results Tables Container -->
+                        <StackPane >
+                            <TableView fx:id="resultTable" styleClass="modern-results-table excel-table">
+                            <columns>
+                                <TableColumn fx:id="nomColumn" text="Nomenclature" prefWidth="140"/>
+                                <TableColumn fx:id="decoupageColumn" text="Dec. PSA" prefWidth="100"/>
+                                <TableColumn fx:id="protoColumn" text="Prix unitaire proto (€)" prefWidth="120"/>
+                                <TableColumn fx:id="serieColumn" text="Prix unitaire série (€)" prefWidth="120"/>
+                                <TableColumn fx:id="nomFichierColumn" text="Nom du fichier" prefWidth="240"/>
+                            </columns>
+                            </TableView>
+
+                            <TableView fx:id="pdfResultTable" styleClass="modern-results-table pdf-table">
+                            <columns>
+                                    <TableColumn fx:id="pdfRefColumn" text="Référence"/>
+                                    <TableColumn fx:id="pdfNomFichierColumn" text="Nom du fichier"/>
+                                    <TableColumn fx:id="pdfActionColumn" text="Télécharger"/>
+                                </columns>
+                            </TableView>
+
+                            <TableView fx:id="pdfManuelResultTable" styleClass="modern-results-table manuel-table">
+                            <columns>
+                                    <TableColumn fx:id="pdfManuelRefColumn" text="Référence"/>
+                                    <TableColumn fx:id="pdfManuelDesignationColumn" text="Désignation"/>
+                                    <TableColumn fx:id="pdfManuelPrixColumn" text="Prix (€)"/>
+                                    <TableColumn fx:id="pdfManuelNomFichierColumn" text="Nom du fichier"/>
+                                </columns>
+                            </TableView>
+                        </StackPane>
+                    </VBox>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

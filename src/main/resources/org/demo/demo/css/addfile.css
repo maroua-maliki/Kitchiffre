@@ -1,0 +1,217 @@
+/* ======= Modern Add File Design ======= */
+
+/* Global Styles */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-opacity: 0.3;
+}
+
+
+
+/* ======= Content Section ======= */
+.content-section {
+    -fx-background-color: white;
+    -fx-alignment: center;
+}
+
+/* ======= Upload Card ======= */
+.upload-card-container {
+    -fx-max-width: 600;
+    -fx-min-width: 600;
+}
+
+.card-bg-circle {
+    -fx-opacity: 0.05;
+}
+
+
+.upload-card {
+    -fx-background-color: white;
+    -fx-padding: 40;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 20, 0.3, 0, 8);
+    -fx-max-width: 500;
+    -fx-min-width: 500;
+}
+
+.upload-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 22, 0.35, 0, 9);
+}
+
+
+/* Upload Icon Section */
+.upload-icon-container {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+
+.upload-icon-bg {
+    -fx-fill: linear-gradient(to bottom, #4A90E2, #6BB6FF);
+    -fx-opacity: 0.1;
+}
+
+.upload-main-icon {
+    -fx-icon-size: 36;
+    -fx-icon-color: #4A90E2;
+}
+
+.upload-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.upload-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: #5A6C7D;
+    -fx-text-alignment: center;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* File Selection Area */
+.file-selection-area {
+    -fx-max-width: 450;
+}
+
+.file-input-container {
+    -fx-max-width: 450;
+}
+
+.modern-file-field {
+    -fx-pref-width: 320;
+    -fx-font-size: 14px;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-border-color: #E1E8ED;
+    -fx-border-width: 2;
+    -fx-padding: 12 16;
+    -fx-background-color: #F8F9FA;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.modern-file-field:focused {
+    -fx-border-color: #4A90E2;
+    -fx-background-color: white;
+}
+
+/* Browse Button */
+.browse-button {
+    -fx-background-color: linear-gradient(to bottom, #5DADE2, #85C1E9);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12 20;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(93, 173, 226, 0.4), 8, 0, 0, 3);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.browse-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #85C1E9, #A8D8F0);
+    -fx-effect: dropshadow(gaussian, rgba(93, 173, 226, 0.6), 12, 0, 0, 5);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.browse-icon {
+    -fx-icon-size: 16;
+    -fx-icon-color: white;
+}
+
+.browse-text {
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Action Buttons */
+.action-buttons {
+    -fx-max-width: 400;
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, #4A90E2, #6BB6FF);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-padding: 15 25;
+    -fx-background-radius: 25;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.4), 10, 0, 0, 4);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #6BB6FF, #8AC4FF);
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.6), 15, 0, 0, 6);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.secondary-button {
+    -fx-background-color: linear-gradient(to bottom, #F8F9FA, #E9ECEF);
+    -fx-text-fill: #6C757D;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-padding: 15 25;
+    -fx-background-radius: 25;
+    -fx-border-color: #DEE2E6;
+    -fx-border-width: 1;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.secondary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #E9ECEF, #DEE2E6);
+    -fx-text-fill: #495057;
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.btn-icon {
+    -fx-icon-size: 18;
+    -fx-icon-color: white;
+}
+
+.btn-text {
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.secondary-button .btn-icon {
+    -fx-icon-color: #6C757D;
+}
+
+.secondary-button .btn-text {
+    -fx-text-fill: #6C757D;
+    -fx-font-weight: 600;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ======= Simple Status Section ======= */
+.simple-status-section {
+    -fx-max-width: 500;
+}
+
+.status-message {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-alignment: center;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.simple-spinner {
+    -fx-icon-size: 24;
+    -fx-icon-color: #4A90E2;
+}

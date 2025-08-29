@@ -1,0 +1,201 @@
+/* ======= Modern Add File Manuel Design ======= */
+
+/* Global Styles */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-opacity: 0.3;
+}
+
+.main-container {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #f8fafc, #e2e8f0);
+    -fx-spacing: 0;
+}
+
+
+/* ======= Manuel Content Section ======= */
+.manuel-content-section {
+    -fx-background-color: white;
+    -fx-alignment: center;
+}
+
+/* ======= Manuel Form Card ======= */
+.manuel-card-container {
+    -fx-max-width: 580;
+    -fx-min-width: 580;
+}
+
+.manuel-bg-circle {
+    -fx-opacity: 0.05;
+}
+
+.circle-1 {
+    -fx-fill: linear-gradient(to bottom, #4A90E2, #6BB6FF);
+    -fx-translate-x: -95;
+    -fx-translate-y: -45;
+}
+
+.circle-2 {
+    -fx-fill: linear-gradient(to bottom, #5DADE2, #85C1E9);
+    -fx-translate-x: 105;
+    -fx-translate-y: 55;
+}
+
+.manuel-card {
+    -fx-background-color: white;
+    -fx-padding: 38;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 20, 0.3, 0, 8);
+    -fx-max-width: 500;
+    -fx-min-width: 500;
+}
+
+.manuel-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 22, 0.35, 0, 9);
+}
+
+
+/* Manuel Icon Section */
+.manuel-icon-container {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+
+.manuel-icon-bg {
+    -fx-fill: linear-gradient(to bottom, #4A90E2, #6BB6FF);
+    -fx-opacity: 0.1;
+}
+
+.manuel-main-icon {
+    -fx-icon-size: 34;
+    -fx-icon-color: #4A90E2;
+}
+
+.manuel-title {
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.manuel-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: #5A6C7D;
+    -fx-text-alignment: center;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Manuel Input Area */
+.manuel-input-area {
+    -fx-max-width: 440;
+}
+
+.input-group {
+    -fx-max-width: 440;
+}
+
+.input-label-container {
+    -fx-max-width: 440;
+}
+
+.input-icon {
+    -fx-icon-size: 16;
+    -fx-icon-color: #4A90E2;
+}
+
+.input-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #2C3E50;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.modern-input-field {
+    -fx-pref-width: 440;
+    -fx-font-size: 14px;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-border-color: #E1E8ED;
+    -fx-border-width: 2;
+    -fx-padding: 12 16;
+    -fx-background-color: #F8F9FA;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.modern-input-field:focused {
+    -fx-border-color: #4A90E2;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.2), 8, 0, 0, 2);
+}
+
+/* Manuel Action Buttons */
+.manuel-action-buttons {
+    -fx-max-width: 400;
+}
+
+.manuel-primary-button {
+    -fx-background-color: linear-gradient(to bottom, #4A90E2, #6BB6FF);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-padding: 14 24;
+    -fx-background-radius: 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.4), 10, 0, 0, 4);
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.manuel-primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #6BB6FF, #85C1E9);
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.6), 15, 0, 0, 6);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.manuel-secondary-button {
+    -fx-background-color: linear-gradient(to bottom, #F8F9FA, #E9ECEF);
+    -fx-text-fill: #6C757D;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-padding: 14 24;
+    -fx-background-radius: 22;
+    -fx-border-color: #DEE2E6;
+    -fx-border-width: 1;
+    -fx-border-radius: 22;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.manuel-secondary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #E9ECEF, #DEE2E6);
+    -fx-text-fill: #495057;
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.btn-icon {
+    -fx-icon-size: 18;
+    -fx-icon-color: white;
+}
+
+.btn-text {
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.manuel-secondary-button .btn-icon {
+    -fx-icon-color: #6C757D;
+}
+
+.manuel-secondary-button .btn-text {
+    -fx-text-fill: #6C757D;
+    -fx-font-weight: 600;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
