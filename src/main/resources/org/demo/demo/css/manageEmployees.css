@@ -215,3 +215,50 @@
     -fx-background-color: #e9ecef;
     -fx-border-color: #495057;
 }
+/* Container de la barre de recherche */
+.search-box {
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Champ de recherche */
+.search-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d9e6;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 6 50 6 15; /* espace pour le bouton à droite */
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0, 0, 1);
+    -fx-cursor: text;
+    -fx-min-width: 250;
+    -fx-max-width: 400;
+}
+
+.search-field:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.25), 6, 0, 0, 0);
+}
+
+/* Bouton de recherche intégré */
+.search-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-min-width: 35;
+    -fx-min-height: 35;
+    -fx-pref-width: 35;
+    -fx-pref-height: 35;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-font-size: 14px;
+}
+
+.search-button:hover {
+    -fx-background-color: #5dade2;
+}
+

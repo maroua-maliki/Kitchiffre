@@ -22,7 +22,7 @@
                 <Insets top="15" right="20" bottom="15" left="20"/>
             </padding>
 
-            <!-- Titre de la section -->
+            <!-- Titre principal -->
             <VBox alignment="CENTER" spacing="5">
                 <Label text="Gestion des Employés" styleClass="section-title"/>
                 <Rectangle width="50" height="2" styleClass="section-underline"/>
@@ -31,7 +31,7 @@
             <!-- Section unique de gestion des employés -->
             <VBox spacing="15" alignment="CENTER" styleClass="single-employee-section">
 
-                <!-- Formulaire d'ajout compact -->
+                <!-- Formulaire d'ajout -->
                 <VBox spacing="10" alignment="CENTER" styleClass="add-form">
                     <HBox spacing="10" alignment="CENTER">
                         <TextField fx:id="usernameField" promptText="nom@capgemini.com" prefWidth="200"/>
@@ -42,11 +42,23 @@
                 </VBox>
 
                 <!-- Liste des employés -->
-                <VBox spacing="8" alignment="CENTER" styleClass="employee-list-section">
+                <VBox spacing="10" alignment="CENTER" styleClass="employee-list-section">
+
+                    <!-- Titre de la liste -->
                     <Label text="Liste des employés" styleClass="section-title"/>
+
+                    <!-- Barre de recherche -->
+                    <HBox spacing="5" alignment="CENTER_LEFT" styleClass="search-box">
+                        <TextField fx:id="searchField" promptText="Rechercher un employé..." styleClass="search-field"/>
+                        <Button fx:id="searchButton" onAction="#handleSearch" styleClass="search-button" text="🔍"/>
+                    </HBox>
+
+
+                    <!-- Liste scrollable -->
                     <ScrollPane prefHeight="200" prefWidth="500" styleClass="employee-scroll">
                         <VBox fx:id="employeeContainer" spacing="2" styleClass="employee-container"/>
                     </ScrollPane>
+
                 </VBox>
 
             </VBox>

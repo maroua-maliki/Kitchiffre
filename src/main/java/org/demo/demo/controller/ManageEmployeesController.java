@@ -10,13 +10,11 @@ import javafx.scene.layout.Region;
 import javafx.geometry.Insets;
 import org.demo.demo.dao.UtilisateurDAO;
 import org.demo.demo.entities.Utilisateur;
-import org.demo.demo.config.DatabaseUtil;
+import org.demo.demo.config.ExcelUtil;
 import org.demo.demo.services.EmployeeService;
 
-import java.sql.Connection;
-import java.util.List;
-import org.demo.demo.config.ExcelUtil;
 import java.io.File;
+import java.util.List;
 
 public class ManageEmployeesController {
 
@@ -32,6 +30,12 @@ public class ManageEmployeesController {
     @FXML
     private VBox employeeContainer;
 
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private Button searchButton;
+
     private EmployeeService employeeService;
 
     @FXML
@@ -40,7 +44,13 @@ public class ManageEmployeesController {
             File excelFile = ExcelUtil.getUtilisateurExcelFile();
             UtilisateurDAO utilisateurDAO = new UtilisateurDAO(excelFile);
             employeeService = new EmployeeService(utilisateurDAO);
+
+            // Charger toute la liste au démarrage
             refreshEmployeeList();
+
+            // Recherche en direct (optionnel)
+            searchField.textProperty().addListener((obs, oldVal, newVal) -> handleSearch());
+
         } catch (Exception e) {
             statusLabel.setText("Erreur lors du chargement du fichier Excel");
             e.printStackTrace();
@@ -58,7 +68,6 @@ public class ManageEmployeesController {
         }
 
         try {
-            // Utiliser le service pour ajouter l'employé
             boolean success = employeeService.addEmployee(username, password);
 
             if(success) {
@@ -75,6 +84,35 @@ public class ManageEmployeesController {
         } catch (Exception e) {
             e.printStackTrace();
             statusLabel.setText("Erreur lors de l'ajout de l'employé !");
+        }
+    }
+
+    @FXML
+    private void handleSearch() {
+        String keyword = searchField.getText().trim().toLowerCase();
+
+        try {
+            List<Utilisateur> users = employeeService.getAllEmployees();
+
+            List<Utilisateur> filteredUsers = users.stream()
+                    .filter(user -> user.getUsername().toLowerCase().contains(keyword))
+                    .toList();
+
+            employeeContainer.getChildren().clear();
+            for (Utilisateur user : filteredUsers) {
+                HBox employeeRow = createEmployeeRow(user);
+                employeeContainer.getChildren().add(employeeRow);
+            }
+
+            if (filteredUsers.isEmpty()) {
+                statusLabel.setText("Aucun employé trouvé !");
+            } else {
+                statusLabel.setText(filteredUsers.size() + " employé(s) trouvé(s).");
+            }
+
+        } catch (Exception e) {
+            statusLabel.setText("Erreur lors de la recherche !");
+            e.printStackTrace();
         }
     }
 
@@ -98,21 +136,17 @@ public class ManageEmployeesController {
         row.setSpacing(10);
         row.setPadding(new Insets(5, 10, 5, 10));
 
-        // Nom de l'employé
         Label nameLabel = new Label(user.getUsername());
         nameLabel.getStyleClass().add("employee-name");
 
-        // Spacer pour pousser les boutons à droite
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        // Bouton modifier
         Button editBtn = new Button("Modifier");
         editBtn.getStyleClass().add("action-button");
         editBtn.setTooltip(new Tooltip("Modifier le mot de passe"));
         editBtn.setOnAction(e -> handleEditEmployee(user.getUsername()));
 
-        // Bouton supprimer
         Button deleteBtn = new Button("Supprimer");
         deleteBtn.getStyleClass().add("action-button");
         deleteBtn.setTooltip(new Tooltip("Supprimer l'employé"));
@@ -123,7 +157,6 @@ public class ManageEmployeesController {
     }
 
     private void handleEditEmployee(String username) {
-        // Créer une boîte de dialogue pour modifier le mot de passe
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Modifier l'employé");
         dialog.setHeaderText("Modifier le mot de passe de : " + username);
@@ -149,7 +182,6 @@ public class ManageEmployeesController {
     }
 
     private void handleDeleteEmployee(String username) {
-        // Confirmation de suppression
         Alert confirmAlert = new Alert(AlertType.CONFIRMATION);
         confirmAlert.setTitle("Confirmer la suppression");
         confirmAlert.setHeaderText("Supprimer l'employé");
