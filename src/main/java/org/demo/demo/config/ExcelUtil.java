@@ -28,14 +28,13 @@ public class ExcelUtil {
         return BASE_PATH.resolve("produit_pdf.xlsx").toFile();
     }
 
-    // 🔍 Cherche dynamiquement le dossier "Kitchiffre" synchronisé
     private static Path findSharedKitchiffreFolder() {
         File usersRoot = new File("C:\\Users");
         File[] userDirs = usersRoot.listFiles(File::isDirectory);
 
         if (userDirs != null) {
             for (File userDir : userDirs) {
-
+                // Cas 1 : OneDrive - Capgemini
                 File onedrive = new File(userDir, "OneDrive - Capgemini");
                 File kitchiffre = new File(onedrive, "Kitchiffre");
                 if (kitchiffre.exists() && kitchiffre.isDirectory()) {

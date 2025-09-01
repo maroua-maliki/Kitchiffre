@@ -41,14 +41,12 @@ public class AddFileService {
             throw new IOException("Le dossier partagé 'Kitchiffre' est introuvable dans les utilisateurs Windows.");
         }
 
-        // 📂 Créer le sous-dossier (excel/pdfs)
         Path destinationDir = kitchiffreFolder.resolve(subFolder);
         Files.createDirectories(destinationDir);
 
         File sourceFile = new File(filePath);
         Path destinationFile = destinationDir.resolve(sourceFile.getName());
 
-        //Copier le fichier
         Files.copy(sourceFile.toPath(), destinationFile, StandardCopyOption.REPLACE_EXISTING);
 
         return destinationFile;

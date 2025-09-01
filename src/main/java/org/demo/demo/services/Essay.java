@@ -13,6 +13,8 @@ import org.demo.demo.entities.PdfExtrait;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class Essay {
 
@@ -34,37 +36,47 @@ public class Essay {
             return;
         }
 
+        // Dossier de destination : pdfs/
+        File dossierDestination = new File("pdfs");
+        if (!dossierDestination.exists()) {
+            dossierDestination.mkdirs();
+        }
+
         for (File fichierPdf : fichiers) {
             try {
-                if (fichierDAO.existsByFilename(fichierPdf.getName())) {
-                    System.out.println("Fichier déjà traité : " + fichierPdf.getName());
+                String nomComplet = fichierPdf.getName(); // ex: contrat_marseille.pdf
+                String nomSansExtension = nomComplet.replaceFirst("(?i)\\.pdf$", ""); // contrat_marseille
+
+                if (fichierDAO.existsByFilename(nomSansExtension)) {
+                    System.out.println("Fichier déjà traité : " + nomComplet);
                     continue;
                 }
 
-                // Construction du chemin (relatif ou absolu selon ton besoin)
-                String cheminFichier = fichierPdf.getAbsolutePath(); // ou chemin relatif
+                // Copier le fichier dans le dossier pdfs/
+                File destination = new File(dossierDestination, nomComplet);
+                Files.copy(fichierPdf.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-                // Création de l'entité Fichier avec path
+                // Enregistrer le chemin relatif "pdfs/nom.pdf"
+                String cheminRelatif = "pdfs/" + nomComplet;
+
                 Fichier fichierEntity = new Fichier(
-                        fichierPdf.getName(),
+                        nomSansExtension,  // nom sans extension
                         "pdf",
-                        cheminFichier
+                        cheminRelatif      // chemin relatif
                 );
 
                 int fichierId = fichierDAO.save(fichierEntity);
                 fichierEntity.setId(fichierId);
 
-                // Extraction complète : texte natif + OCR
                 String texte = extraireTexteCompletAvecOCR(fichierPdf);
 
-                // Enregistrement du contenu dans la base
                 PdfExtrait extrait = new PdfExtrait();
                 extrait.setContenu(texte);
                 extrait.setFichier(fichierEntity);
 
                 pdfExtraitDAO.save(extrait);
 
-                System.out.println("✅ Fichier traité et enregistré : " + fichierPdf.getName());
+                System.out.println("✅ Fichier traité et enregistré : " + nomComplet);
 
             } catch (Exception e) {
                 System.err.println("❌ Erreur avec le fichier : " + fichierPdf.getName());
@@ -73,13 +85,11 @@ public class Essay {
         }
     }
 
-
     private String extraireTexteCompletAvecOCR(File fichierPdf) throws IOException, TesseractException {
         PDDocument document = PDDocument.load(fichierPdf);
         PDFRenderer renderer = new PDFRenderer(document);
         Tesseract tesseract = new Tesseract();
-        tesseract.setDatapath("tessdata"); // adapte ce chemin selon ton projet
-        // tesseract.setLanguage("fra"); // si besoin de français
+        tesseract.setDatapath("tessdata");
 
         StringBuilder contenuComplet = new StringBuilder();
         PDFTextStripper stripper = new PDFTextStripper();
@@ -87,12 +97,10 @@ public class Essay {
         int nbPages = document.getNumberOfPages();
 
         for (int page = 0; page < nbPages; page++) {
-            // Texte natif PDF
             stripper.setStartPage(page + 1);
             stripper.setEndPage(page + 1);
             String textePage = stripper.getText(document).trim();
 
-            // OCR image
             BufferedImage image = renderer.renderImageWithDPI(page, 300);
             String ocrPage = tesseract.doOCR(image).trim();
 

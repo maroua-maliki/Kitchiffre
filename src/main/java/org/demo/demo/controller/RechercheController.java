@@ -246,7 +246,6 @@ public class RechercheController {
         String keyword = searchField.getText();
 
         if (keyword == null || keyword.trim().isEmpty()) {
-            // Champ vide → ne pas lancer la recherche
             resultTable.setVisible(false);
             pdfResultTable.setVisible(false);
             pdfManuelResultTable.setVisible(false);
@@ -258,41 +257,48 @@ public class RechercheController {
 
         String type = typeComboBox.getValue();
         loadingLabel.setVisible(true);
-        noResultLabel.setVisible(false); // au cas où il était visible précédemment
+        noResultLabel.setVisible(false);
 
         Task<Void> task = new Task<>() {
             List<ProduitExcel> results;
-            List<PdfExtrait> pdfResults;
-            List<ProduitPdfManuel> pdfManuelResults;
+            List<PdfExtrait> pdfResults = List.of(); // vide par défaut
+            List<ProduitPdfManuel> pdfManuelResults = List.of(); // vide par défaut
 
             @Override
             protected Void call() {
+                // D'abord chercher dans Excel uniquement
                 results = recherchService.rechercherProduitsParDescription(keyword);
-                pdfResults = recherchService.rechercherDansExtraitsPDF(keyword);
-                pdfManuelResults = recherchService.rechercherProduitsPdfDepuisBase(keyword);
+
+                // Si aucun résultat Excel, chercher dans les PDF
+                if (results.isEmpty()) {
+                    pdfResults = recherchService.rechercherDansExtraitsPDF(keyword);
+                    pdfManuelResults = recherchService.rechercherProduitsPdfDepuisBase(keyword);
+                }
+
                 return null;
             }
 
             @Override
             protected void succeeded() {
+                // Afficher résultats Excel
                 resultTable.setItems(FXCollections.observableArrayList(results));
+                resultTable.setVisible(!results.isEmpty());
+
+                // Afficher résultats PDF seulement si Excel vide
+                boolean showPdf = results.isEmpty();
+
                 pdfResultTable.setItems(FXCollections.observableArrayList(pdfResults));
+                pdfResultTable.setVisible(showPdf && !pdfResults.isEmpty());
+
                 pdfManuelResultTable.setItems(FXCollections.observableArrayList(pdfManuelResults));
+                pdfManuelResultTable.setVisible(showPdf && !pdfManuelResults.isEmpty());
 
-                boolean hasExcel = !results.isEmpty();
-                boolean hasPdf = !pdfResults.isEmpty();
-                boolean hasPdfManuel = !pdfManuelResults.isEmpty();
-
-                resultTable.setVisible(hasExcel);
-                pdfResultTable.setVisible(hasPdf);
-                pdfManuelResultTable.setVisible(hasPdfManuel);
-
-                if (!hasExcel && !hasPdf && !hasPdfManuel) {
+                if (!resultTable.isVisible() && !pdfResultTable.isVisible() && !pdfManuelResultTable.isVisible()) {
                     noResultLabel.setText("Aucun résultat trouvé.");
                     noResultLabel.setVisible(true);
                 }
 
-                if (hasExcel) {
+                if (!results.isEmpty()) {
                     switch (type) {
                         case "Proto" -> {
                             protoColumn.setVisible(true);
@@ -310,12 +316,12 @@ public class RechercheController {
                     ajusterLargeurColonnes();
                 }
 
-                if (hasPdf) {
+                if (pdfResultTable.isVisible()) {
                     ajusterLargeurColonnesPdf();
                     pdfResultTable.refresh();
                 }
 
-                if (hasPdfManuel) {
+                if (pdfManuelResultTable.isVisible()) {
                     ajusterLargeurColonnesManuel();
                 }
 
@@ -331,5 +337,6 @@ public class RechercheController {
 
         new Thread(task).start();
     }
+
 
 }

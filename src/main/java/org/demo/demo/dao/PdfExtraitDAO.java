@@ -91,7 +91,6 @@ public class PdfExtraitDAO {
                 Cell contenuCell = row.getCell(1);
                 if (contenuCell == null) continue;
 
-                // Lecture sécurisée du contenu, quel que soit le type de cellule
                 String contenu = switch (contenuCell.getCellType()) {
                     case STRING -> contenuCell.getStringCellValue();
                     case NUMERIC -> String.valueOf(contenuCell.getNumericCellValue());
